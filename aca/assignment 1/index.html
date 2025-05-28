@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <main>
+        <div>
+            <img class="profile" src="profile.jpg" alt="profile pic">
+        </div>
+    </main>
+    <!-- <div class="name"></div> -->
+    <div class="name">
+        <h1>Ankur Sahu
+            <h2>IIT Kanpur'28</h2>
+        </h1>
+    </div>
+    <div class="container">
+        <div class="box">
+            <i class="fas fa-phone"></i> 8808970320
+<div style="display: flex; align-items: center; gap: 8px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail logo with red and white envelope, symbolizing email communication, neutral background and tone" width="30" height="30">
+    <span>ankursahu91403@gmail.com</span>
+</div>
+</div>
+<div class="box"> I am ankur Sahu 1st year Btech at Indian Institute of Technology Kanpur. My Branch is civil Engineering.
+    My hometown is Sultanpur Uttar Pradesh.   </div>
+<div class="box">My Hobbies are reading books, playing cricket,playing badminton, listening songs and watching movies. Currently I am trying to read "Bhagwat Gita" </div>
+</div>
+</body>
+
+
+<!-- Add Skills & Courses Section with Edit Button -->
+<div class="box" id="skills-courses-section">
+    <h3>Skills & Courses</h3>
+    <ul id="skills-courses-list">
+        <li>Critical Thinking</li>
+        <li>Problem Solving</li>
+        <li>Time Management</li>
+        <li>Communication Skills</li>
+        <li>Introduction to Civil Engineering</li>
+    </ul>
+    <button id="edit-skills-btn">Edit</button>
+</div>
+<!-- ...existing code... -->
+
+<script src="script.js"></script>
+<script>
+// Add interactivity for editing skills and courses
+const editBtn = document.getElementById('edit-skills-btn');
+const list = document.getElementById('skills-courses-list');
+let editing = false;
+
+editBtn.addEventListener('click', () => {
+    if (!editing) {
+        // Switch to edit mode
+        const items = Array.from(list.children).map(li => li.textContent);
+        list.innerHTML = '';
+        items.forEach((item, idx) => {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = item;
+            input.className = 'edit-skill-input';
+            input.style.marginBottom = '4px';
+            list.appendChild(input);
+            list.appendChild(document.createElement('br'));
+        });
+        editBtn.textContent = 'Save';
+        editing = true;
+    } else {
+        // Save changes
+        const inputs = list.querySelectorAll('input');
+        list.innerHTML = '';
+        inputs.forEach(input => {
+            if (input.value.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = input.value;
+                list.appendChild(li);
+            }
+        });
+        editBtn.textContent = 'Edit';
+        editing = false;
+    }
+});
+</script>
+<!-- ...existing code... -->
+</body>
+<script src="script.js"></script>
+</body>
+
+</html>
